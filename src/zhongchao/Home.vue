@@ -72,6 +72,7 @@
                 <p>img</p>
                 <p>ziziziaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 <p>票价：¥</p>
+                <p>111</p>
               </li>
             </ul>
           </div>
