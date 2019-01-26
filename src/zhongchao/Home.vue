@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Head></Head>
     <div class="classification">
       <div class="classificationhead">
         <p>全部商品分类</p>
@@ -31,9 +32,13 @@
 </template>
 
 <script>
-    export default {
-        name: "Chao"
+import Head from '@/zhanghuan/Head'
+export default {
+    name: "Chao",
+    components: {
+      Head
     }
+}
 </script>
 
 <style scoped lang="less">
