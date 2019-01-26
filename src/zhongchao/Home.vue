@@ -80,21 +80,25 @@
       </div>
       <p class="iconfont icon-xiangyou1"></p>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Head from '@/zhanghuan/Head'
+import Footer from '@/zhanghuan/Footer'
 export default {
     name: "Chao",
     components: {
-      Head
+      Head,
+      Footer
     }
 }
 </script>
 
 <style scoped lang="less">
 .home{
+  background: #f5f5f5;
   .classification{
     width: 1200px;
     margin: 0 auto;
