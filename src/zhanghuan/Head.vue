@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="logo">
-      <img src="../assets/img/logo.png"/>
+      <img @click="backHomeFn" src="../assets/img/logo.png"/>
       <div @mouseleave="cityHide" class="city">
         <p @mouseenter="cityShow">{{cityName}}<span class="iconfont icon-down-trangle"></span></p>
         <div v-show="off2" class="city_detail">
@@ -78,8 +78,8 @@
         </div>
       </div>
       <div class="searchWrap">
-        <input type="text" placeholder="请输入演出、艺人、场馆名称...">
-        <p>搜索</p>
+        <input v-model="searchValue" type="text" placeholder="请输入演出、艺人、场馆名称...">
+        <p @click="searchFn">搜索</p>
       </div>
     </div>
   </div>
@@ -113,7 +113,8 @@ export default {
         timer2:null,
         cityName:'北京',
         //以上都是Head里的数据
-        off2:false
+        off2:false,
+        searchValue:''
       }
     },
     methods: {
@@ -167,6 +168,14 @@ export default {
       },
       cityHide () {
         this.off2 = false
+      },
+      searchFn () {//点击搜索跳转列表页
+        if(this.searchValue !== ''){
+          this.$router.push('/list')
+        }
+      },
+      backHomeFn () {
+        this.$router.push('/')
       }
     }
 }
@@ -333,6 +342,7 @@ export default {
         margin-right: 16px;
         font-size: 14px;
         color: #333;
+        cursor: pointer;
       }
       .city{
         position: relative;
