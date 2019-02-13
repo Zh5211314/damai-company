@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/zhongchao/Home'
+import Resigter from '@/zhongchao/Resigter'
+import Logining from '@/zhongchao/logining'
 import List from '@/zhanghuan/List'
 import Details from '@/zhanghuan/Details'
 import Selection from '@/zhanghuan/Selection'
@@ -27,6 +29,16 @@ export default new Router({
       path: '/select',
       name: 'Selection',
       component: Selection
+	  },
+    {
+      path: '/resigter',
+      name: 'Resigter',
+      component: Resigter,
+    },
+    {
+      path: '/logining',
+      name: 'Logining',
+      component: Logining,
     }
   ],
   //路由跳转时滚动条归零
