@@ -28,5 +28,13 @@ export default new Router({
       name: 'Selection',
       component: Selection
     }
-  ]
+  ],
+  //路由跳转时滚动条归零
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })

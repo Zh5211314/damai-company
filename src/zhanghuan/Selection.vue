@@ -165,7 +165,7 @@ export default {
     },
     choiceGradeFn (index) {//三个等级座位分布展示
       this.seatGrade[index].off = !this.seatGrade[index].off
-      console.log(this.seatGrade[index].off, index)
+        //console.log(this.seatGrade[index].off, index)
     },
     userChoiceFn (x,y,subItem) {//x:一行  y:一列  subItem：每个div
       var price = 0
@@ -180,12 +180,12 @@ export default {
         'col':x,
         'row':y,
         'price':price,
-        'num': x+'-'+y
+        'num': x+'-'+y  //传给后台字段，根据这个字段找到用户要取消的座位
       }
       var userSitNum = x*32+y//计算当前用户点击的座位的下标
       let oDivs = document.getElementsByClassName('allPublicGray')//选中所有的座位
       //console.log(oDivs[userSitNum].off)
-      oDivs[userSitNum].off = !oDivs[userSitNum].off//用户点击当前座位自定义属性取反，选中或者取消
+      oDivs[userSitNum].off = !oDivs[userSitNum].off//用户点击当前座位自定义属性取反，也就是选中和取消
       if(oDivs[userSitNum].off){
           if(subItem == 'a' || subItem == 'b' || subItem == 'c'){  //判断点击空白处不添加背景和座位信息
                 this.getSeatCode.push(obj)//点击添加座位信息

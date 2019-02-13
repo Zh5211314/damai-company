@@ -54,7 +54,10 @@
             </div>
             <div class="showList">
               <ul :class="lengthWays">
-                <li @click="goDetailFn" v-for="(item, index) in showData" :key="index">
+                <li @click="goDetailFn"
+                    v-for="(item, index) in showData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+                    :key="index"
+                >
                   <img src="../assets/img/list.jpg"/>
                   <div class="liExplain">
                     <h3>
@@ -78,6 +81,16 @@
                   </div>
                 </li>
               </ul>
+              <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[6, 12, 18, 24]"
+                background
+                :page-size="pagesize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="showData.length">
+              </el-pagination>
             </div>
           </div>
         </div>
@@ -241,6 +254,10 @@ export default {
         likeDatas:[],
         mapShow:false,
         addressCode:null,
+        //分页器数据
+        currentPage:1, //初始页
+        pagesize:6,    //    每页的数据
+        timer:null
       }
     },
     components: {
@@ -283,7 +300,7 @@ export default {
       },
       myMapFn (index) {//点击弹出地图
         this.mapShow = true
-        this.addressCode = this.showData[index].city //获取每次点击的地址
+        this.addressCode = this.showData.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize)[index].city //获取每次点击的地址,配合分页器
         console.log(this.addressCode)
         this.ready(this.addressCode)//将地址传入地图
       },
@@ -309,6 +326,26 @@ export default {
         });
         //目的地
         localSearch.search(a);
+      },
+      //以下是分页器事件 初始页currentPage、初始每页数据数pagesize和数据data
+      handleSizeChange: function (size) {
+        this.pagesize = size;
+        console.log(this.pagesize)  //每页下拉显示数据
+      },
+      handleCurrentChange: function(currentPage){
+        this.currentPage = currentPage;
+        console.log(this.currentPage)  //点击第几页
+        //动态返回顶部
+        var _this = this
+        this.timer = setInterval(function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          let ispeed = Math.floor(-osTop / 3)
+          document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+          //this.isTop = true
+          if (osTop === 0) {
+            clearInterval(_this.timer)
+          }
+        },30)
       }
     },
     mounted() {
@@ -435,6 +472,11 @@ export default {
         }
         .showList{
           margin-top: 30px;
+          .el-pagination{
+            padding: 10px 0;
+            width: 721px;
+            margin: 0 auto;
+          }
           &>ul.crossr{
             padding: 0 10px;
             li{
