@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Head></Head>
     <div class="classification">
       <p class="iconfont icon-xiangzuo"></p>
       <div class="classificationhead">
@@ -80,13 +81,68 @@
       </div>
       <p class="iconfont icon-xiangyou1"></p>
     </div>
+<<<<<<< master
+=======
+<<<<<<< HEAD
+    <conts></conts>
+    <router-link class="rou" to="resigter">注册</router-link>
+    <router-link class="lo" to="logining">登录</router-link>
+=======
+    <Footer></Footer>
+>>>>>>> d163f235afe61416bfafd762cb677f5d6b47edcb
+>>>>>>> local
   </div>
 </template>
 
 <script>
+<<<<<<< master
     export default {
         name: "Chao"
+=======
+<<<<<<< HEAD
+  import swipe from '@/zhongchao/lunbo'
+  import list from '@/zhongchao/list'
+  import toda from '@/zhongchao/today'
+  import conts from '@/zhongchao/content'
+    export default {
+        name: "Chao",
+      components:{
+        swipe,
+        list,
+        toda,
+        conts,
+      },
+      data(){
+          return{
+            oleft:0,
+            index:0,
+            tod:[
+              "今日推荐","即将开售"
+            ]
+          }
+      },
+      methods: {
+        changed(i) {
+          this.index = i;
+          if(i == 1){
+            this.oleft = -1200
+          }else {
+            this.oleft = 0
+          }
+        }
+      },
+
+import Head from '@/zhanghuan/Head'
+import Footer from '@/zhanghuan/Footer'
+export default {
+    name: "Chao",
+    components: {
+      Head,
+      Footer
+
+>>>>>>> local
     }
+}
 </script>
 
 <style scoped lang="less">
