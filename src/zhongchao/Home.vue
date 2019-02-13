@@ -137,6 +137,7 @@ export default {
 
 <style scoped lang="less">
 .home{
+  background: #f5f5f5;
   .classification{
     width: 1200px;
     margin: 0 auto;

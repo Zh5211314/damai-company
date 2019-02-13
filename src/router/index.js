@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/zhongchao/Home'
-<<<<<<< master
-=======
-<<<<<<< HEAD
+import List from '@/zhanghuan/List'
+import Details from '@/zhanghuan/Details'
+import Selection from '@/zhanghuan/Selection'
 import Resigter from '@/zhongchao/Resigter'
-import Logining from '@/zhongchao/logining'
->>>>>>> local
-
+import Logining from '@/zhongchao/logining
 =======
 import List from '@/zhanghuan/List'
 import Details from '@/zhanghuan/Details'
@@ -21,21 +19,6 @@ export default new Router({
       path: '/',
       name: 'Home',
 <<<<<<< master
-      component: Home
-=======
-<<<<<<< HEAD
-      component: Home,
-    },
-    {
-      path: '/resigter',
-      name: 'Resigter',
-      component: Resigter,
-    },
-    {
-      path: '/logining',
-      name: 'Logining',
-      component: Logining,
-=======
       component: Home
     },
     {
@@ -52,8 +35,18 @@ export default new Router({
       path: '/select',
       name: 'Selection',
       component: Selection
->>>>>>> d163f235afe61416bfafd762cb677f5d6b47edcb
->>>>>>> local
+	},
+{
+      path: '/resigter',
+      name: 'Resigter',
+      component: Resigter,
+    },
+    {
+      path: '/logining',
+      name: 'Logining',
+      component: Logining,
+}
+
     }
   ]
 })
