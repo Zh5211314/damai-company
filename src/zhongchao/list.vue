@@ -1,13 +1,13 @@
 <template>
   <div class="listb">
     <ul class="leftul">
-      <li v-for="(item,o) in lists" :key="o" :class="activeClass == o ? 'active':''" @mouseenter="lisat(o)">
+      <li v-for="(item,o) in lists" :key="o" :class="activeClass == o ? 'active':''" @mouseenter="lisat(o)" @mouseleave="leavs(o)">
         <i :class="item.names"></i>
         {{item.cont}}
         <span :class="item.clas"></span>
       </li>
     </ul>
-    <div class="listbox" v-show="isnone">
+    <div class="listbox" v-show="isnone" @mouseenter="enter()" @mouseleave="leave()">
       <div class="topbox">
         <p>演唱会</p>
         <i class="iconfont icon-xiangyou"></i>
@@ -142,7 +142,8 @@
               "cont":"舞蹈芭蕾",
               "clas":"iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"
             }
-          ]
+          ],
+          timer1:null
         }
       },
       methods:{
@@ -150,6 +151,21 @@
           this.activeClass = o
           this.indexs = o
           this.isnone = true
+          clearTimeout(this.timer1)
+        },
+        leavs(o){
+          var ops  = this
+          this.timer1 = setTimeout(function () {
+            ops.isnone = false
+            ops.activeClass = -1
+          },100)
+        },
+        enter(){
+          var aps = this
+          clearTimeout(this.timer1)
+        },
+        leave () {
+          this.isnone = false
         },
         listbox(){
           this.$http.get(this.$url + 'index.alllists').then((res) => {
@@ -185,19 +201,19 @@
     padding-bottom: 63px;
     background: red;
     float: left;
-  li{
-    color: white;
-    font-size: 11px;
-    height: 51px;
-    line-height: 51px;
-    display: flex;
-    justify-content: space-around;
-    cursor: pointer;
-    &.active{
-      background-color: red;
-      opacity: 0.6;
+    li{
+      color: white;
+      font-size: 11px;
+      height: 51px;
+      line-height: 51px;
+      display: flex;
+      justify-content: space-around;
+      cursor: pointer;
+      &.active{
+        background-color: red;
+        opacity: 0.6;
+      }
     }
-  }
   }
   .listbox{
     float: left;
@@ -245,15 +261,18 @@
   .bottombox{
     width: 856px;
     margin: 0 auto;
-    display: none;        //修改
   .headp{
     height: 58px;
     line-height: 56px;
     font-size: 18px;
   }
   ul{
+    li:first-of-type{
+      padding-left: 0 !important;
+    }
   li{
     float: left;
+    padding-left: 20px;
   p:first-of-type{
     width: 146px;
     height: 192px;
