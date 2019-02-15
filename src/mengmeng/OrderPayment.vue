@@ -30,7 +30,7 @@
             <el-radio :label="6"><img src="../assets/img/zhifu.png"></el-radio>
           </el-radio-group>
         </div>
-        <router-link :to="{name:'OrderWinxin',params:{pamy:this.$route.params.numCode}}" class="confirm">确认无误，支付</router-link>
+        <router-link :to="{name:'OrderWinxin',params:{pamy:this.$route.params.numCode,off:true}}" class="confirm">确认无误，支付</router-link>
       </div>
       <Footer></Footer>
     </div>

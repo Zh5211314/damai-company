@@ -3,7 +3,7 @@
       <Header></Header>
       <div class="Winxin">
         <div class="code">
-          <p>订单将在<span v-text="keepTime" @click="StartCountDown"></span>小时后关闭，请及时付款</p>
+          <p>订单将在<span v-text="keepTime"></span>小时后关闭，请及时付款</p>
           <img src="../assets/img/weixinpa.png">
           <p>请使用微信扫一扫完成支付</p>
         </div>
@@ -33,12 +33,15 @@
           limittime: 120,
           settime: '',
           flag: false,
-          mons:''
+          mons:'',
+          timeroff:false
         }
       },
       methods: {
         cos(){
           this.mons =this.$route.params.pamy
+          //console.log(this.$route.params.off)
+          this.timeroff = this.$route.params.off
         },
         StartCountDown() {
           var mydate = new Date();
@@ -76,6 +79,9 @@
       },
       created() {
         this.cos()
+        if(this.timeroff) {
+          this.StartCountDown()
+        }
       }
     }
 </script>

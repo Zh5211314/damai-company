@@ -42,8 +42,7 @@ export default new Router({
       path: '/logining',
       name: 'Logining',
       component: Logining,
-    }
-},
+    },
     {
       path: '/order',
       name: 'Order',
