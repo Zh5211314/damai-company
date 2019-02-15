@@ -27,8 +27,6 @@
         <toda  :style="{left:oleft + 'px'}"></toda>
       </div>
     </div>
-    <router-link tag="p" to="resigter">登录</router-link>
-    <router-link tag="p" to="logining">登录</router-link>
     <conts></conts>
     <Footer></Footer>
   </div>
