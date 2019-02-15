@@ -1,6 +1,8 @@
 <template>
 <div class="administration">
- <div  class="administration-a">
+  <Head></Head>
+  <div class="administrations">
+    <div  class="administration-a">
    <div class="left">
      <h2>
        我的大麦
@@ -151,7 +153,7 @@
            <p>
             真实姓名
              <input type="text" @blur="blurFn5" ref="texts1" @click="blurFn4">
-             <span v-show="reds6">0到40个汉字</span>
+             <span v-show="reds6">1到40个汉字</span>
              <span class="red" v-show="reds7">请输入正确真实姓名</span>
            </p>
            <p>
@@ -160,11 +162,15 @@
              <span v-show="reds8">请输入15到18位身份证号码</span>
              <span class="red" v-show="reds9">请输入正确身份证号码</span>
            </p>
-           <p>
+           <div id="birthday">
              生日
-             <input type="text">
-             <span class="fa fa-window-maximize gtre"></span>
-           </p>
+             &nbsp;
+             <el-date-picker
+               v-model="value1"
+               type="date"
+               placeholder="选择日期">
+             </el-date-picker>
+           </div>
            <p>
              性别：
              <el-radio v-model="radio" label="1">男</el-radio>
@@ -252,12 +258,20 @@
      </div>
    </div>
  </div>
+  </div>
+  <Footer></Footer>
 </div>
 </template>
 
 <script>
+  import Head from '@/zhanghuan/Head'
+  import Footer from '@/zhanghuan/Footer'
 export default {
     name: 'Yan',
+  components: {
+    Head,
+    Footer
+  },
   data(){
     var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
     var checkid = (rule, value, callback) => {
@@ -341,6 +355,7 @@ export default {
             id: '421658954567328906'
           }
         ],
+        value1: '',
         value5: [],
         value11: [],
         show1:false,
@@ -434,13 +449,13 @@ export default {
     blurFn4(){
       this.reds6=true
       this.reds7=false
-      let res = /^[\u4e00-\u9fa5]{4,40}$/
+      let res = /^[\u4e00-\u9fa5]{1,40}$/
       if(res.test(this.$refs.texts1.value)){
         this.reds6=false
       }
     },
     blurFn5 () {
-      let res =/^[\u4e00-\u9fa5]{4,40}$/
+      let res =/^[\u4e00-\u9fa5]{1,40}$/
       if(!res.test(this.$refs.texts1.value)){
         this.reds7=true
         this.reds6=false
@@ -558,13 +573,21 @@ export default {
 </script>
 
 <style scoped lang="less">
+  #birthday{
+    margin-left: 80px;
+    margin-top: 20px;
+  }
   .administration{
-    margin-top: 100px;
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
     background: #f5f5f5;
-    border-top: 2px solid red;
+    .administrations{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 20px;
+      background: #f5f5f5;
+      border-top: 2px solid red;
+    }
     .administration-a{
       width: 1200px;
       margin: 0 auto;
