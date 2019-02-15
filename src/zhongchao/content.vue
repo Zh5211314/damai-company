@@ -67,7 +67,6 @@
             this.contbigpic = con.data.data
             this.asd = this.contbigpic[0].ulList
             this.lis = this.contbigpic[0].newsList
-            console.log(this.lis)
           })
         },
       },
@@ -80,7 +79,7 @@
 <style scoped lang="less">
   .main{
     width: 1200px;
-    margin: 30px auto 0;
+    margin: 30px auto 30px;
     overflow: hidden;
   .mainleft{
     width: 894px;
@@ -165,14 +164,12 @@
     color: #9b9b9b;
     span:first-of-type{
       display: inline-block;
-      //float: left;
       width: 70px;
       height: 14px;
       overflow: hidden;
     }
     span:last-of-type{
       display: inline-block;
-      //float: left;
       width: 70px;
       height: 14px;
       overflow: hidden;
@@ -224,6 +221,10 @@
         height: 30px;
         line-height: 30px;
         padding-left: 32px;
+        cursor: pointer;
+        &:hover{
+          color: red;
+        }
         span{
           height: 12px;
           line-height: 12px;

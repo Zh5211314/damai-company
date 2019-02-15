@@ -20,7 +20,6 @@
       methods:{
         getlunbo(){
           this.$http.get(this.$url + 'index.lunbo').then((lun) => {
-            //console.log(lun)
             this.lunbo = lun.data.data
           })
         }
@@ -38,12 +37,12 @@
     position: absolute;
     top: 50px;
     left: 0;
-    .el-carousel{
-      .el-carousel__container{
+    /deep/.el-carousel{
+      /deep/.el-carousel__container{
         position: relative;
-        .el-carousel__arrow--left{
-          position: fixed !important;
-          left: -20% !important;
+       /deep/.el-carousel__arrow--left {
+         position: absolute;
+         left: 18%;
         }
       }
     }
@@ -55,6 +54,9 @@
     width: 1200px !important;
     height: 420px !important;
     margin: 0;
+    img{
+      height: 420px;
+    }
   }
   .el-carousel__item:nth-child(2n) {
     background-color: #99a9bf;

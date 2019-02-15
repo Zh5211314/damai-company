@@ -2,7 +2,7 @@
     <div class="login">
       <div class="headbox">
         <div class="head">
-          <img src="../assets/img/resigter-logo.png" alt="">
+          <router-link to="/"> <img src="../assets/img/logo.png" alt=""></router-link>
           <p>欢迎登录</p>
         </div>
       </div>
@@ -17,25 +17,27 @@
               <div class="lebox">
                 <div class="box">
                   <span><i class="iconfont icon-user"></i></span>
-                  <input type="text" placeholder="请输入手机号">
+                  <input type="text" placeholder="请输入手机号" v-model="onephone">
                 </div>
+                <p class="phonep" v-show="loading">{{tastsphoneas}}</p>
                 <div class="box">
                   <span><i class="iconfont icon-password"></i></span>
-                  <input type="text" placeholder="请输入登录密码">
+                  <input type="text" placeholder="请输入登录密码" v-model="onepass">
                 </div>
+                <p class="phonepass" v-show="loading">{{tastsnowpassas}}</p>
               </div>
               <div class="ribox">
                 <div class="boxa">
                   <span><i class="iconfont icon-user"></i></span>
-                  <input type="text" placeholder="请输入手机号">
+                  <input type="text" placeholder="请输入手机号" v-model="pheee">
                 </div>
                 <div class="clicksa">
                   <p></p>
-                  <button>点击发送</button>
+                  <p @click="yanzheng()"><span v-if="!off">{{time}}</span><span>{{txt}}</span></p>
                 </div>
               </div>
             </div>
-            <p class="logo">登录</p>
+            <p class="logo" @click="denglu()">登录</p>
             <div class="lrbox">
               <div class="bottombox">
                 <input type="checkbox" id="asd">
@@ -43,7 +45,7 @@
               </div>
               <div class="rigbox">
                 <p class="one">忘记密码?</p>
-                <p class="two">立即注册</p>
+                <router-link tag="p" class="two" to="/resigter">立即注册</router-link>
               </div>
             </div>
             <div class="weisinbox">
@@ -81,7 +83,18 @@
           index:0,
           tod:[
             "账户登录","短信快捷登录"
-          ]
+          ],
+          onephone:"",
+          onepass:"",
+          pheee:"",
+          time:60,
+          timers:null,
+          off:true,
+          txt:"获取验证码",
+          tastsphoneas:"",
+          tastsnowpassas:"",
+          loading: false,
+          cla:"tivea"
         }
       },
       methods: {
@@ -89,10 +102,45 @@
           this.index = i;
           if(i == 1){
             this.olefts = -466
-          }else {
+          }else{
             this.olefts = 0
           }
-        }
+        },
+        denglu(){
+          var ophone = localStorage.getItem("phone")
+          var opass = localStorage.getItem("pass")
+          if (this.onephone == ""){
+            this.loading = true
+            //alert(1)
+            this.tastsphoneas = "请输入手机号"
+          } else if(this.onephone != ophone){
+            this.loading = true
+            this.tastsphoneas = "请输入正确手机号"
+          }
+          if (this.onepass == ""){
+            this.loading = true
+            this.tastsnowpassas = "请输入正确密码"
+          } else if(this.onepass != opass){
+            console.log("请输入正确密码")
+          }
+          if (this.onephone && this.onepass){
+            this.$router.push({path: '/'})
+          }
+        },
+        yanzheng(){
+          const sff = this
+          this.off = false
+          sff.txt = '秒后重新发送'
+          this.timers = setInterval(function () {
+            sff.time--
+            if (sff.time <= 0){
+              clearInterval(sff.timers)
+              sff.off = true
+              sff.txt = '重新发送'
+              sff.time = 60
+            }
+          },10)
+        },
       }
     }
 </script>
@@ -147,37 +195,59 @@
           height: 31px;
           overflow: hidden;
           position: relative;
-          border-bottom: 1px solid #dddee1;
-          .active{
-            background: #ccc;
-          }
-          p{
-            border: 1px solid #dddee1;
-            border-bottom: none;
-            border-top-right-radius: 3px;
-            border-top-left-radius: 3px;
-            background: white;
-          }
           p:first-of-type{
+            border: 1px solid #dddee1;
             width: 88px;
-            height: 32px;
-            line-height: 32px;
+            height: 29px;
+            line-height: 29px;
             text-align: center;
-            position: absolute;
-            top: 0;
-            left: 0;
+            z-index: 10;
             font-size: 12px;
             float: left;
           }
           p:last-of-type{
-            height: 32px;
-            line-height: 32px;
+            border: 1px solid #dddee1;
+            height: 29px;
+            line-height: 29px;
             width: 116px;
             text-align: center;
             font-size: 12px;
-            position: absolute;
-            top: 0;
-            left: 94px;
+            float: left;
+            margin-left: 6px;
+            position: relative;
+            &:before{
+              content: '';
+              display: inline-block;
+              width: 7px;
+              height: 1px;
+              background: #dddee1;
+              position: absolute;
+              top: 27px;
+              left: -7px;
+            }
+            &:after{
+              content: '';
+              display: inline-block;
+              width: 300px;
+              height: 1px;
+              background: #dddee1;
+              position: absolute;
+              top: 27px;
+              left: 115px;
+            }
+          }
+          p{
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+            background: white;
+            cursor: pointer;
+            box-sizing: border-box;
+            color: red;
+            &.active{
+              background: #f8f8f9;
+              border-bottom: none;
+              color: black;
+            }
           }
         }
         .widthbox{
@@ -187,6 +257,7 @@
           transition: 1s;
           .lebox{
             float: left;
+            position: relative;
             .box:last-of-type{
               margin-top: 24px;
             }
@@ -226,6 +297,16 @@
                 float: left;
               }
             }
+            .phonep{
+              position: absolute;
+              top: 52px;
+              left: 24px;
+            }
+            .phonepass{
+              position: absolute;
+              top: 110px;
+              left: 24px;
+            }
           }
           .ribox{
             float: left;
@@ -264,17 +345,19 @@
               padding-left: 24px;
               overflow: hidden;
               padding-top: 24px;
-              button{
+              p:last-of-type{
                 height: 34px;
                 line-height: 34px;
-                margin-left: 6px;
+                font-size: 12px;
+                cursor: pointer;
               }
-              p{
+              p:first-of-type{
                 width: 80px;
                 height: 34px;
                 line-height: 34px;
                 border: 1px solid #dddee1;
                 float: left;
+                margin-right: 10px;
               }
             }
           }
@@ -321,6 +404,7 @@
               font-size: 11px;
               padding-right: 49px;
               color: #ff0000;
+              cursor: pointer;
             }
           }
         }

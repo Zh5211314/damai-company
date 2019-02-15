@@ -31,7 +31,6 @@
         listtoday(){
           this.$http.get(this.$url + 'index.todaytujian').then((to) => {
             this.todays = to.data.today
-            console.log(this.todays)
           })
         },
       },

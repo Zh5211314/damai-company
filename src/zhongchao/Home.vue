@@ -1,20 +1,23 @@
 <template>
   <div class="home">
-    <div class="classification">
-      <div class="classificationhead">
-        <p>全部商品分类</p>
-       <div class="ulbox">                          <!--配置子路由-->
-         <ul>
-           <li class="homexiju">喜剧</li>
-           <li class="homesports">体育</li>
-           <li class="homeerzi">亲子</li>
-           <li class="homexidance">舞蹈古典</li>
-           <li class="homeyaogun">摇滚</li>
-         </ul>
-       </div>
+    <Head></Head>
+    <div class="bigger">
+      <div class="classification">
+        <div class="classificationhead">
+          <p>全部商品分类</p>
+          <div class="ulbox">                          <!--配置子路由-->
+            <ul>
+              <li class="homexiju">喜剧</li>
+              <li class="homesports">体育</li>
+              <li class="homeerzi">亲子</li>
+              <li class="homexidance">舞蹈古典</li>
+              <li class="homeyaogun">摇滚</li>
+            </ul>
+          </div>
+        </div>
+        <swipe></swipe>
+        <list></list>
       </div>
-      <swipe></swipe>
-      <list></list>
     </div>
     <div class="today">
       <div class="todthead">
@@ -25,6 +28,7 @@
       </div>
     </div>
     <conts></conts>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -33,6 +37,8 @@
   import list from '@/zhongchao/list'
   import toda from '@/zhongchao/today'
   import conts from '@/zhongchao/content'
+  import Head from '@/zhanghuan/Head'
+  import Footer from '@/zhanghuan/Footer'
     export default {
         name: "Chao",
       components:{
@@ -40,6 +46,8 @@
         list,
         toda,
         conts,
+        Head,
+        Footer
       },
       data(){
           return{
@@ -134,6 +142,7 @@
         font-size: 14px;
         float: left;
         margin-right: 16px;
+        cursor: pointer;
       }
       p:last-of-type{
         height: 40px;
@@ -141,11 +150,13 @@
         padding: 0 18px;
         font-size: 14px;
         float: left;
+        cursor: pointer;
       }
     }
     .content{
       width: 98%;
       float: right;
+      overflow: hidden;
     }
   }
 }

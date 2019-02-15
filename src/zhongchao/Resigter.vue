@@ -2,7 +2,7 @@
     <div class="resigter">
       <div class="headbox">
         <div class="head">
-        <img src="../assets/img/resigter-logo.png" alt="">
+        <router-link to="/"> <img src="../assets/img/logo.png" alt=""></router-link>
         <p>欢迎登录</p>
       </div>
       </div>
@@ -13,30 +13,30 @@
               <span class="iconfont icon-user"></span>
               <input type="text" v-model="newPhone" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入手机号" @blur="likaione()">          <!--未输入框框变红-->
             </div>
-            <!--<p>请填写手机号</p>                                     &lt;!&ndash;所有p标签已经隐藏&ndash;&gt;-->
+            <p v-show="loading">{{tastsphone}}</p>
           </div>
           <div class="publicbox">
             <div class="inppass">
               <span class="iconfont icon-password"></span>
               <input type="text" placeholder="请输入登录密码" v-model="newpass" @blur="likaitwo()">
             </div>
-            <!--<p>请填写密码</p>-->
+            <p v-show="loading">{{tastsnowpass}}</p>
           </div>
           <div class="publicbox">
             <div class="inppasssure">
               <span class="iconfont icon-password"></span>
               <input type="text" placeholder="请输入再次登录密码" v-model="pass" @blur="likaithree()">
             </div>
-            <!--<p>请填写确认密码</p>-->
+            <p v-show="loading">{{tastspass}}</p>
           </div>
           <div class="verification">
             <div>
               <span class="iconfont icon-xinxi"></span>
               <input type="text" placeholder="请输入验证码">
             </div>
-            <p>获取验证码</p>
+            <p @click="yanzheng()"><span v-if="!off">{{time}}</span><span>{{txt}}</span></p>
           </div>
-          <input class="resi" type="submit" value="立即注册">
+          <input class="resi" type="submit" value="立即注册" @click="zhuce()">
         </form>
         <div class="foot">
           <ul>
@@ -70,43 +70,92 @@
           state: null,
           show: false,
           time:60,
-          timers:null
+          timers:null,
+          off:true,
+          txt:"获取验证码",
+          tastsphone:"",
+          tastsnowpass:"",
+          tastspass:"",
         }
       },
       methods:{
         likaione() {
           const self = this;
-          if (self.newPhone == "" || !self.newPhone) {
-            console.log("请输入电话号码");
+          if (self.newPhone == "") {
+            self.loading = true
+            self.tastsphone = "请输入手机号"
           }
           else if (!(/^1[34578]\d{9}$/.test(self.newPhone))) {
-            console.log("电话号码格式错误");
+            self.loading = true
+            self.tastsphone = "电话号码格式错误"
+          }else if(self.newPhone == self.newPhone){
+            self.loading = false
+            self.tastsphone = ""
+          }else if((/^1[34578]\d{9}$/.test(self.newPhone))){
+            self.loading = false
+            self.tastsphone = ""
           }
         },
         likaitwo(){
           const asself = this;
-          if (asself.newpass == "" || !asself.newpass) {
-            console.log("请输入密码");
+          if (asself.newpass == "") {
+            asself.loading = true
+            asself.tastsnowpass = "请输入密码"
           }else if (!(/^(?![^a-zA-Z]+$)(?!\D+$)/.test(asself.newpass))) {
-            console.log("密码格式错误");
+            asself.loading = true
+            asself.tastsnowpass = "密码格式错误"
+          }else if(asself.newpass == asself.newpass){
+            asself.loading = false
+            asself.tastsnowpass = ""
+          }else if((/^1[34578]\d{9}$/.test(asself.newpass))){
+            asself.loading = false
+            asself.tastsnowpass = ""
           }
         },
         likaithree(){
           const opassnow = this;
-          if (opassnow.pass == "" || !opassnow.pass) {
-            console.log("请输入密码");
-          }else if (opassnow.pass != this.newpass) {
-            console.log("密码错误");
+          if (opassnow.pass == "") {
+            opassnow.loading = true
+            opassnow.tastspass = "请再次输入密码"
+          }else if (opassnow.pass != opassnow.newpass) {
+            opassnow.loading = true
+            opassnow.tastspass = "密码错误"
+          }else if(opassnow.pass == opassnow.newpass){
+            opassnow.loading = false
+            opassnow.tastsnowpass = ""
           }
         },
-      }
+        yanzheng(){
+          const sff = this
+          this.off = false
+          sff.txt = '秒后重新发送'
+          this.timers = setInterval(function () {
+            sff.time--
+            if (sff.time <= 0){
+              clearInterval(sff.timers)
+              sff.off = true
+              sff.txt = '重新发送'
+              sff.time = 60
+            }
+          },1000)
+        },
+        zhuce(){
+          var cas = this
+          if (cas.newPhone && cas.newpass && cas.newpass==cas.pass){
+            localStorage.setItem("phone",cas.newPhone)
+            localStorage.setItem("pass",cas.newpass)
+            cas.$router.push({path: '/logining'})
+          }
+        }
+      },
     }
 </script>
 
 <style scoped lang="less">
 .resigter{
   width: 100%;
-  background: red;
+  background: #eee;
+  height: 100%;
   .headbox{
     width: 100%;
     background: white;
@@ -134,13 +183,12 @@
     }
   }
   .bigbox{
-    //background: #f5f5f5;
     padding-top: 90px;
     .resibox{
       width: 600px;
       background: white;
       margin: 0 auto;
-      padding: 50px 200px 104px 200px;
+      padding: 50px 200px 132px 200px;
       .publicbox{
         height: 66px;
         position: relative;
@@ -170,7 +218,6 @@
           color: #ed3f14;
           top: 36px;
           left: 0;
-          display: none;
         }
       }
       .verification{
@@ -208,6 +255,7 @@
           font-size: 11px;
           color: #495060;
           float: left;
+          cursor: pointer;
         }
       }
       .resi{
