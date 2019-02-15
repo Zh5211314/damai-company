@@ -1,100 +1,74 @@
 <template>
   <div class="home">
     <Head></Head>
-    <div class="classification">
-      <p class="iconfont icon-xiangzuo"></p>
-      <div class="classificationhead">
-        <p>全部商品分类</p>
-       <div class="ulbox">
-         <ul>
-           <li>喜剧</li>
-           <li>体育</li>
-           <li>亲子</li>
-           <li>舞蹈古典</li>
-           <li>摇滚</li>
-         </ul>
-       </div>
-      </div>
-      <div class="rotation">
-        <!--轮播图-->
-      </div>
-      <div class="listb">
-        <ul class="leftul">
-          <li>
-            <i class="iconfont icon-huatong1"></i>
-            演唱会
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-yinlehui"></i>
-            音乐会
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-huajugeju"></i>
-            歌剧话剧
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-shanzi"></i>
-            曲苑杂坛
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-zuqiu"></i>
-            体育比赛
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-ertong"></i>
-            儿童亲子
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-          <li>
-            <i class="iconfont icon-flamenco"></i>
-            舞蹈芭蕾
-            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
-          </li>
-        </ul>
-        <div class="listbox">
-          <div class="topbox">
-            <p>演唱会</p>
-            <i class="iconfont icon-xiangyou"></i>
+    <div class="bigger">
+      <div class="classification">
+        <div class="classificationhead">
+          <p>全部商品分类</p>
+          <div class="ulbox">                          <!--配置子路由-->
             <ul>
-              <li>子类1</li>
-              <li>子类2</li>
-            </ul>
-            <span class="iconfont icon-guanbi"></span>
-          </div>
-          <div class="bottombox">
-            <p class="headp">相关热门</p>
-            <ul>
-              <li>
-                <p>img</p>
-                <p>ziziziaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p>票价：¥</p>
-              </li>
+              <li class="homexiju">喜剧</li>
+              <li class="homesports">体育</li>
+              <li class="homeerzi">亲子</li>
+              <li class="homexidance">舞蹈古典</li>
+              <li class="homeyaogun">摇滚</li>
             </ul>
           </div>
         </div>
+        <swipe></swipe>
+        <list></list>
       </div>
-      <p class="iconfont icon-xiangyou1"></p>
     </div>
-    <router-link to="/order">订单</router-link>
+    <div class="today">
+      <div class="todthead">
+        <p v-for="(item,i) in tod" :key="i" :class="{active:i === index}" @click="changed(i)">{{item}}</p>
+      </div>
+      <div class="content">
+        <toda  :style="{left:oleft + 'px'}"></toda>
+      </div>
+    </div>
+    <conts></conts>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Head from '@/zhanghuan/Head'
-import Footer from '@/zhanghuan/Footer'
-export default {
-    name: "Chao",
-    components: {
-      Head,
-      Footer
+  import swipe from '@/zhongchao/lunbo'
+  import list from '@/zhongchao/list'
+  import toda from '@/zhongchao/today'
+  import conts from '@/zhongchao/content'
+  import Head from '@/zhanghuan/Head'
+  import Footer from '@/zhanghuan/Footer'
+    export default {
+        name: "Chao",
+      components:{
+        swipe,
+        list,
+        toda,
+        conts,
+        Head,
+        Footer
+      },
+      data(){
+          return{
+            oleft:0,
+            index:0,
+            tod:[
+              "今日推荐","即将开售"
+            ]
+          }
+      },
+      methods: {
+        changed(i) {
+          this.index = i;
+          if(i == 1){
+            this.oleft = -1200
+          }else {
+            this.oleft = 0
+          }
+        }
+      }
     }
-}
 </script>
 
 <style scoped lang="less">
@@ -102,6 +76,7 @@ export default {
   background: #f5f5f5;
   .classification{
     width: 1200px;
+    height: 470px;
     margin: 0 auto;
     position: relative;
     .classificationhead{
@@ -120,6 +95,7 @@ export default {
         width: 998px;
         border: 1px solid #dcdcdc;
         float: left;
+        background: white;
         ul{
           width: 490px;
           display: flex;
@@ -138,95 +114,49 @@ export default {
       height: 420px;
       background: black;
       opacity: 0.3;
-    }
-    .listb{
-      position: absolute;
-      top: 50px;
-      left: 0;
       overflow: hidden;
-      .leftul{
-        width: 200px;
-        padding-bottom: 66px;
-        background: red;
+      li{
         float: left;
-        li{
-          color: white;
-          font-size: 11px;
-          height: 51px;
-          line-height: 51px;
-          display: flex;
-          justify-content: space-around;
-          cursor: pointer;
-        }
       }
-      .listbox{
+    }
+  }
+  .today{
+    width: 1200px;
+    height: 319px;
+    margin: 30px auto 0;
+    background: white;
+    //overflow: hidden;
+    padding-bottom: 32px;
+    .todthead{
+      width: 98%;
+      float: right;
+      overflow: hidden;
+      border-bottom: 1px solid #ccc;
+      .active{
+        border-bottom: 2px solid red;
+      }
+      p:first-of-type{
+        height: 40px;
+        line-height: 40px;
+        padding: 0 18px;
+        font-size: 14px;
         float: left;
-        width: 900px;
-        height: 420px;
-        background: rgba(218,230,244,.9);
-        .topbox{
-          width: 856px;
-          height: 64px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          border-bottom: 1px dashed black;
-          p{
-            font-size: 10px;
-            padding: 6px 18px;
-            background-color: #fff;
-            border-radius: 10px;
-            cursor: pointer;
-          }
-          i{
-            margin: 6px 0 0 10px;
-          }
-          span{
-            display: inline-block;
-            width: 18px;
-            height: 18x;
-            margin-left: 610px;
-            cursor: pointer;
-          }
-          ul{
-            li{
-              float: left;
-              font-size: 10px;
-              padding: 0 16px;
-              border-right: 1px solid #867080;
-              cursor: pointer;
-              &:last-of-type{
-                border-right: none;
-              }
-            }
-          }
-        }
-        .bottombox{
-          width: 856px;
-          margin: 0 auto;
-          .headp{
-            height: 58px;
-            line-height: 56px;
-            font-size: 18px;
-          }
-          ul{
-            li{
-              p:first-of-type{
-                width: 146px;
-                height: 192px;
-                border: 1px solid black;
-              }
-              p:nth-of-type(2){
-                padding: 12px 2px 6px;
-                width: 146px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
-            }
-          }
-        }
+        margin-right: 16px;
+        cursor: pointer;
       }
+      p:last-of-type{
+        height: 40px;
+        line-height: 40px;
+        padding: 0 18px;
+        font-size: 14px;
+        float: left;
+        cursor: pointer;
+      }
+    }
+    .content{
+      width: 98%;
+      float: right;
+      overflow: hidden;
     }
   }
 }

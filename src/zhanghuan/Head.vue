@@ -5,8 +5,8 @@
         <div class="left">
           <p>HI,欢迎来大麦</p>
           <p>
-            [<span href="#">登录</span>
-            <span href="#">注册</span>]
+            [<router-link tag="span" to="/logining">登录</router-link>
+            <router-link tag="span" to="/resigter">注册</router-link>]
           </p>
           <div @mouseleave="myinfoHide"  @mouseenter="myinfoShow" class="left_myinfo">
             <p>我的大麦<span class="iconfont icon-down-trangle"></span></p>

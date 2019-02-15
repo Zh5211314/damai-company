@@ -1,6 +1,12 @@
 <template>
     <div>
       <div id="allmap" class="allmap" ref="allmap" style="height: 500px;width: 500px"></div>
+      <div class="bottmobox" :style="{display: myIndex == 0? 'block':'none'}">1</div>
+      <div class="bottmobox" :style="{display: myIndex == 1? 'block':'none'}">2</div>
+      <div class="bottmobox" :style="{display: myIndex == 2? 'block':'none'}">3</div>
+      <div class="bottmobox" :style="{display: myIndex == 3? 'block':'none'}">4</div>
+      <div class="bottmobox" :style="{display: myIndex == 4? 'block':'none'}">5</div>
+      <div class="bottmobox" :style="{display: myIndex == 5? 'block':'none'}">6</div>
     </div>
 </template>
 
@@ -8,6 +14,11 @@
 import BMap from 'BMap';
 export default {
     name: 'Map',
+    data () {
+      return {
+        myIndex:0
+      }
+    },
     mounted() {
       this.ready();
     },
@@ -49,7 +60,10 @@ export default {
         //map.addControl(new BMap.ScaleControl());
         //添加地图类型控件
         //map.addControl(new BMap.MapTypeControl());
-      }
+      },
+      /*mouseenterFn (index) {
+        this.myIndex = index
+      }*/
     }
 }
 </script>
