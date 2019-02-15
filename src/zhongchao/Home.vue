@@ -80,6 +80,7 @@
       </div>
       <p class="iconfont icon-xiangyou1"></p>
     </div>
+    <router-link to="/order">订单</router-link>
     <Footer></Footer>
   </div>
 </template>

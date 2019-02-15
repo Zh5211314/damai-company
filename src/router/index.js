@@ -4,6 +4,9 @@ import Home from '@/zhongchao/Home'
 import List from '@/zhanghuan/List'
 import Details from '@/zhanghuan/Details'
 import Selection from '@/zhanghuan/Selection'
+import Order from '@/mengmeng/Order'
+import OrderPayment from '@/mengmeng/OrderPayment'
+import OrderWinxin from '@/mengmeng/OrderWinxin'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +30,21 @@ export default new Router({
       path: '/select',
       name: 'Selection',
       component: Selection
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
+    },
+    {
+      path: '/orderpayment',
+      name: 'OrderPayment',
+      component: OrderPayment
+    },
+    {
+      path: '/orderwinxin',
+      name: 'OrderWinxin',
+      component: OrderWinxin
     }
   ]
 })
