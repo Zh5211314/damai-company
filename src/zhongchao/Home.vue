@@ -83,9 +83,9 @@
 </template>
 
 <script>
-    export default {
-        name: "Chao"
-    }
+export default {
+    name: 'Home'
+}
 </script>
 
 <style scoped lang="less">
