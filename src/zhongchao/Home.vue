@@ -25,8 +25,6 @@
       </div>
     </div>
     <conts></conts>
-    <router-link class="rou" to="resigter">注册</router-link>
-    <router-link class="lo" to="logining">登录</router-link>
   </div>
 </template>
 
