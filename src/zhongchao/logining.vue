@@ -1,148 +1,175 @@
 <template>
-    <div class="login">
-      <div class="headbox">
-        <div class="head">
-          <router-link to="/"> <img src="../assets/img/logo.png" alt=""></router-link>
-          <p>欢迎登录</p>
-        </div>
-      </div>
-      <div class="midd">
-        <div class="autob">
-          <img src="../assets/img/logopic-1.jpg" alt="">
-          <form class="rightbox">
-            <div class="twop">
-              <p v-for="(item,i) in tod" :key="i" :class="{active:i === index}" @click="changed(i)">{{item}}</p>
-            </div>
-            <div class="widthbox" :style="{left:olefts + 'px'}">
-              <div class="lebox">
-                <div class="box">
-                  <span><i class="iconfont icon-user"></i></span>
-                  <input type="text" placeholder="请输入手机号" v-model="onephone">
-                </div>
-                <p class="phonep" v-show="loading">{{tastsphoneas}}</p>
-                <div class="box">
-                  <span><i class="iconfont icon-password"></i></span>
-                  <input type="text" placeholder="请输入登录密码" v-model="onepass">
-                </div>
-                <p class="phonepass" v-show="loading">{{tastsnowpassas}}</p>
-              </div>
-              <div class="ribox">
-                <div class="boxa">
-                  <span><i class="iconfont icon-user"></i></span>
-                  <input type="text" placeholder="请输入手机号" v-model="pheee">
-                </div>
-                <div class="clicksa">
-                  <p></p>
-                  <p @click="yanzheng()"><span v-if="!off">{{time}}</span><span>{{txt}}</span></p>
-                </div>
-              </div>
-            </div>
-            <p class="logo" @click="denglu()">登录</p>
-            <div class="lrbox">
-              <div class="bottombox">
-                <input type="checkbox" id="asd">
-                <label for="asd">下次自动登录</label>
-              </div>
-              <div class="rigbox">
-                <p class="one">忘记密码?</p>
-                <router-link tag="p" class="two" to="/resigter">立即注册</router-link>
-              </div>
-            </div>
-            <div class="weisinbox">
-              <p class="last">其他登录:</p>
-              <img src="../assets/img/weixin.jpg" alt="">
-            </div>
-          </form>
-        </div>
-        <div class="foot">
-          <ul>
-            <li>公司介绍</li>
-            <li>品牌识别</li>
-            <li>企业荣誉</li>
-            <li>隐私声明</li>
-            <li>联系及合作</li>
-            <li>招聘信息</li>
-            <li>网站地图</li>
-            <li>友情链接</li>
-            <li>公司大事记</li>
-          </ul>
-          <p>京ICP证031086号 | 京ICP备1013248号 | 京公安网11032040599500349号 | 广播电视节目制作经营许可证（京）字第032256号</p>
-          <p>网络文化经营许可证 京网文[2018]3243-534号 | 营业性演出许可证 京市演出888号</p>
-          <p>北京阿博文化有限公司 大麦网 Copyright 2008-2018 All Right Reserved</p>
-        </div>
+  <div class="login">
+    <div class="headbox">
+      <div class="head">
+        <router-link to="/"> <img src="../assets/img/logo.png" alt=""></router-link>
+        <p>欢迎登录</p>
       </div>
     </div>
+    <div class="midd">
+      <div class="autob">
+        <img src="../assets/img/logopic-1.jpg" alt="">
+        <form class="rightbox">
+          <div class="twop">
+            <p v-for="(item,i) in tod" :key="i" :class="{active:i === index}" @click="changed(i)">{{item}}</p>
+          </div>
+          <div class="widthbox" :style="{left:olefts + 'px'}">
+            <div class="lebox">
+              <div class="box">
+                <span><i class="iconfont icon-user"></i></span>
+                <input
+                  type="text"
+                  placeholder="请输入手机号"
+                  v-model="onephone"
+                  @focus="afocus()"
+                >
+              </div>
+              <p class="phonep" v-show="loading">{{tastsphoneas}}</p>
+              <div class="box">
+                <span><i class="iconfont icon-password"></i></span>
+                <input
+                  type="text"
+                  placeholder="请输入登录密码"
+                  v-model="onepass"
+                  @focus="afocus()"
+                >
+              </div>
+              <p class="phonepass" v-show="loading">{{tastsnowpassas}}</p>
+            </div>
+            <div class="ribox">
+              <div class="boxa">
+                <span><i class="iconfont icon-user"></i></span>
+                <input type="text" placeholder="请输入手机号" v-model="pheee">
+              </div>
+              <div class="clicksa">
+                <p></p>
+                <p @click="yanzheng()"><span v-if="!off">{{time}}</span><span>{{txt}}</span></p>
+              </div>
+            </div>
+          </div>
+          <p class="logo" @click="denglu()">登录</p>
+          <div class="lrbox">
+            <div class="bottombox">
+              <input type="checkbox" id="asd">
+              <label for="asd">下次自动登录</label>
+            </div>
+            <div class="rigbox">
+              <p class="one">忘记密码?</p>
+              <router-link tag="p" class="two" to="/resigter">立即注册</router-link>
+            </div>
+          </div>
+          <div class="weisinbox">
+            <p class="last">其他登录:</p>
+            <img src="../assets/img/weixin.jpg" alt="">
+          </div>
+        </form>
+      </div>
+      <div class="foot">
+        <ul>
+          <li>公司介绍</li>
+          <li>品牌识别</li>
+          <li>企业荣誉</li>
+          <li>隐私声明</li>
+          <li>联系及合作</li>
+          <li>招聘信息</li>
+          <li>网站地图</li>
+          <li>友情链接</li>
+          <li>公司大事记</li>
+        </ul>
+        <p>京ICP证031086号 | 京ICP备1013248号 | 京公安网11032040599500349号 | 广播电视节目制作经营许可证（京）字第032256号</p>
+        <p>网络文化经营许可证 京网文[2018]3243-534号 | 营业性演出许可证 京市演出888号</p>
+        <p>北京阿博文化有限公司 大麦网 Copyright 2008-2018 All Right Reserved</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "logining",
-      data() {
-        return{
-          olefts:0,
-          index:0,
-          tod:[
-            "账户登录","短信快捷登录"
-          ],
-          onephone:"",
-          onepass:"",
-          pheee:"",
-          time:60,
-          timers:null,
-          off:true,
-          txt:"获取验证码",
-          tastsphoneas:"",
-          tastsnowpassas:"",
-          loading: false,
-          cla:"tivea"
+  export default {
+    name: "logining",
+    data() {
+      return{
+        olefts:0,
+        index:0,
+        tod:[
+          "账户登录","短信快捷登录"
+        ],
+        onephone:"",
+        onepass:"",
+        pheee:"",
+        time:60,
+        timers:null,
+        off:true,
+        txt:"获取验证码",
+        tastsphoneas:"",
+        tastsnowpassas:"",
+        loading: false,
+        cla:"tivea"
+      }
+    },
+    methods: {
+      afocus(){
+        this.tastsphoneas = ""
+        this.tastsnowpassas = ""
+      },
+      changed(i) {
+        this.index = i;
+        if(i == 1){
+          this.olefts = -466
+          this.tastsphoneas = ""
+          this.tastsnowpassas = ""
+        }else{
+          this.olefts = 0
         }
       },
-      methods: {
-        changed(i) {
-          this.index = i;
-          if(i == 1){
-            this.olefts = -466
-          }else{
-            this.olefts = 0
+      denglu(){
+        var _this = this
+        var ophone = localStorage.getItem("cartData")
+        var Transformation = JSON.parse(ophone)
+        var zhuce = Transformation.some(function (item,index) {  //验证注册过的账号和密码是否对应
+          return item.phone == _this.onephone && item.pass == _this.onepass
+        })
+        var reg = Transformation.some(function (item,index) {   //验证用户是否注册
+          return item.phone == _this.onephone
+        })
+        if(this.onephone == ""){
+          this.loading = true
+          this.tastsphoneas = "请输入手机号"
+        }else if(!(/^1[34578]\d{9}$/.test(this.onephone))){
+          this.loading = true
+          this.tastsphoneas = "电话号码格式错误"
+        }else if(this.onepass == ""){
+          this.loading = true
+          this.tastsnowpassas = "请输入密码"
+        }else if(!reg){
+          alert('该用户没有注册！！')
+        }else if(!zhuce){
+          alert('账号或者密码不对')
+        }else{
+          alert('登录成功！！')
+          this.$router.push({path: '/'})
+        }
+      },
+      afocus () {   //获取焦点的时候提示取消
+        this.loading = false
+        this.tastsphoneas = ""
+      },
+      yanzheng(){
+        const sff = this
+        this.off = false
+        sff.txt = '秒后重新发送'
+        this.timers = setInterval(function () {
+          sff.time--
+          if (sff.time <= 0){
+            clearInterval(sff.timers)
+            sff.off = true
+            sff.txt = '重新发送'
+            sff.time = 60
           }
-        },
-        denglu(){
-          var ophone = localStorage.getItem("phone")
-          var opass = localStorage.getItem("pass")
-          if (this.onephone == ""){
-            this.loading = true
-            //alert(1)
-            this.tastsphoneas = "请输入手机号"
-          } else if(this.onephone != ophone){
-            this.loading = true
-            this.tastsphoneas = "请输入正确手机号"
-          }
-          if (this.onepass == ""){
-            this.loading = true
-            this.tastsnowpassas = "请输入正确密码"
-          } else if(this.onepass != opass){
-            console.log("请输入正确密码")
-          }
-          if (this.onephone && this.onepass){
-            this.$router.push({path: '/'})
-          }
-        },
-        yanzheng(){
-          const sff = this
-          this.off = false
-          sff.txt = '秒后重新发送'
-          this.timers = setInterval(function () {
-            sff.time--
-            if (sff.time <= 0){
-              clearInterval(sff.timers)
-              sff.off = true
-              sff.txt = '重新发送'
-              sff.time = 60
-            }
-          },10)
-        },
-      }
+        },10)
+      },
     }
+  }
 </script>
 
 <style scoped lang="less">
@@ -301,11 +328,15 @@
               position: absolute;
               top: 52px;
               left: 24px;
+              font-size: 12px;
+              color: red;
             }
             .phonepass{
               position: absolute;
               top: 110px;
               left: 24px;
+              font-size: 12px;
+              color: red;
             }
           }
           .ribox{
