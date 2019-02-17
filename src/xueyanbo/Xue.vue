@@ -267,6 +267,7 @@
         },
         drama (){
           this.$router.push({path:'/xue' })
+          alert(1)
         },
         dramaone (){
           this.$router.push({path:'/xuel' })
@@ -310,6 +311,9 @@
     }
 </script>
 <style scoped lang="less">
+  #xue{
+    background: #f5f5f5;
+  }
   .block{
     width: 1200px;
     margin: 0 auto;

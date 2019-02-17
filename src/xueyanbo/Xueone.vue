@@ -314,6 +314,9 @@
   }
 </script>
 <style scoped lang="less">
+  #xue{
+    background: #f5f5f5;
+  }
   .block{
     width: 1200px;
     margin: 0 auto;

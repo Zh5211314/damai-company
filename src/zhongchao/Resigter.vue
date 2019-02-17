@@ -222,6 +222,10 @@
     }
     .bigbox{
       padding-top: 90px;
+      input{
+        position: relative;
+        top: -1px;
+      }
       .resibox{
         width: 600px;
         background: white;
