@@ -4,11 +4,11 @@
     <div class="nav">
       <ul>
         <li @click="home">首页</li>
-        <li @click="drama" class="active">喜剧</li>
+        <li @click="drama">喜剧</li>
         <li @click="dramaone" >体育</li>
         <li @click="dramatwo">亲子</li>
-        <li @click="dramatree">舞蹈古典</li>
-        <li @click="dramal">摇滚</li>
+        <li @click="dramatree" class="active">舞蹈古典</li>
+        <li @click="dramal" >摇滚</li>
         <li class="bnmk">精彩专题</li>
       </ul>
     </div>
@@ -23,9 +23,9 @@
       </el-carousel>
     </div>
     <div class="hot">
-     <h2>
-       <img src="../assets/img/title.png" alt="">
-     </h2>
+      <h2>
+        <img src="../assets/img/title.png" alt="">
+      </h2>
       <div class="hots">
         <ul  class="bh">
           <li class="byh" v-for="(itemx,index) in lists" :key="index">
@@ -33,9 +33,9 @@
               <dt>
                 <img :src=itemx.image alt="图片">
               </dt>
-             <dd>
-               {{itemx.name}}
-             </dd>
+              <dd>
+                {{itemx.name}}
+              </dd>
               <dd>
                 票价：<span> ￥{{itemx.number}}</span> 起
               </dd>
@@ -77,136 +77,136 @@
     </div>
     <div class="field">
       <ul>
-        <router-link exact to="/xue/" tag="li">音乐会专区</router-link>
-        <router-link to="/xue/movie" tag="li">舞蹈专区</router-link>
+        <router-link exact to="/xuetwo/" tag="li">音乐会专区</router-link>
+        <router-link to="/xuetwo/movie" tag="li">舞蹈专区</router-link>
       </ul>
       <keep-alive>
-      <router-view></router-view>
+        <router-view></router-view>
       </keep-alive>
     </div>
     <div class="ranking">
-       <h2>
-         <img src="../assets/img/acon.png" alt="图片">
-       </h2>
-        <div class="bgl"  v-for="(itemxx,index) in lists" :key="index" v-if="index == 0">
-          <img :src=itemxx.image alt="图片">
-        </div>
+      <h2>
+        <img src="../assets/img/acon.png" alt="图片">
+      </h2>
+      <div class="bgl"  v-for="(itemxx,index) in lists" :key="index" v-if="index == 0">
+        <img :src=itemxx.image alt="图片">
+      </div>
       <div class="rank">
-       <ul>
-         <li>
-           <dl>
-             <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-               <img :src=itemxxb.image alt="图片">
-             </dt>
-             <dd>
-               小可音乐剧《我变了，我没变》
-             </dd>
-             <dd>
-               2018.1.8-2018.1.9
-             </dd>
-             <dd>
-               深圳市少年宫剧场
-             </dd>
-             <dd>
-               <span>￥120</span>起
-             </dd>
-           </dl>
-         </li>
-         <li>
-           <dl>
-             <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-               <img :src=itemxxb.image alt="图片">
-             </dt>
-             <dd>
-               小可音乐剧《我变了，我没变》
-             </dd>
-             <dd>
-               2018.1.8-2018.1.9
-             </dd>
-             <dd>
-               深圳市少年宫剧场
-             </dd>
-             <dd>
-               <span>￥120</span>起
-             </dd>
-           </dl>
-         </li>
-         <li>
-           <dl>
-             <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-               <img :src=itemxxb.image alt="图片">
-             </dt>
-             <dd>
-               小可音乐剧《我变了，我没变》
-             </dd>
-             <dd>
-               2018.1.8-2018.1.9
-             </dd>
-             <dd>
-               深圳市少年宫剧场
-             </dd>
-             <dd>
-               <span>￥120</span>起
-             </dd>
-           </dl>
-         </li>
-         <li>
-           <dl>
-             <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-               <img :src=itemxxb.image alt="图片">
-             </dt>
-             <dd>
-               小可音乐剧《我变了，我没变》
-             </dd>
-             <dd>
-               2018.1.8-2018.1.9
-             </dd>
-             <dd>
-               深圳市少年宫剧场
-             </dd>
-             <dd>
-               <span>￥120</span>起
-             </dd>
-           </dl>
-         </li>
-         <li>
-           <dl>
-             <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-               <img :src=itemxxb.image alt="图片">
-             </dt>
-             <dd>
-               小可音乐剧《我变了，我没变》
-             </dd>
-             <dd>
-               2018.1.8-2018.1.9
-             </dd>
-             <dd>
-               深圳市少年宫剧场
-             </dd>
-             <dd>
-               <span>￥120</span>起
-             </dd>
-           </dl>
-         </li><li>
-         <dl>
-           <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
-             <img :src=itemxxb.image alt="图片">
-           </dt>
-           <dd>
-             小可音乐剧《我变了，我没变》
-           </dd>
-           <dd>
-             2018.1.8-2018.1.9
-           </dd>
-           <dd>
-             深圳市少年宫剧场
-           </dd>
-           <dd>
-             <span>￥120</span>起
-           </dd>
-         </dl>
-       </li>
-       </ul>
+        <ul>
+          <li>
+            <dl>
+              <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+                <img :src=itemxxb.image alt="图片">
+              </dt>
+              <dd>
+                小可音乐剧《我变了，我没变》
+              </dd>
+              <dd>
+                2018.1.8-2018.1.9
+              </dd>
+              <dd>
+                深圳市少年宫剧场
+              </dd>
+              <dd>
+                <span>￥120</span>起
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+                <img :src=itemxxb.image alt="图片">
+              </dt>
+              <dd>
+                小可音乐剧《我变了，我没变》
+              </dd>
+              <dd>
+                2018.1.8-2018.1.9
+              </dd>
+              <dd>
+                深圳市少年宫剧场
+              </dd>
+              <dd>
+                <span>￥120</span>起
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+                <img :src=itemxxb.image alt="图片">
+              </dt>
+              <dd>
+                小可音乐剧《我变了，我没变》
+              </dd>
+              <dd>
+                2018.1.8-2018.1.9
+              </dd>
+              <dd>
+                深圳市少年宫剧场
+              </dd>
+              <dd>
+                <span>￥120</span>起
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+                <img :src=itemxxb.image alt="图片">
+              </dt>
+              <dd>
+                小可音乐剧《我变了，我没变》
+              </dd>
+              <dd>
+                2018.1.8-2018.1.9
+              </dd>
+              <dd>
+                深圳市少年宫剧场
+              </dd>
+              <dd>
+                <span>￥120</span>起
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+                <img :src=itemxxb.image alt="图片">
+              </dt>
+              <dd>
+                小可音乐剧《我变了，我没变》
+              </dd>
+              <dd>
+                2018.1.8-2018.1.9
+              </dd>
+              <dd>
+                深圳市少年宫剧场
+              </dd>
+              <dd>
+                <span>￥120</span>起
+              </dd>
+            </dl>
+          </li><li>
+          <dl>
+            <dt v-for="(itemxxb,index) in lists" :key="index" v-if="index == 0">
+              <img :src=itemxxb.image alt="图片">
+            </dt>
+            <dd>
+              小可音乐剧《我变了，我没变》
+            </dd>
+            <dd>
+              2018.1.8-2018.1.9
+            </dd>
+            <dd>
+              深圳市少年宫剧场
+            </dd>
+            <dd>
+              <span>￥120</span>起
+            </dd>
+          </dl>
+        </li>
+        </ul>
       </div>
     </div>
     <div class="times">
@@ -243,71 +243,73 @@
   import Footer from '@/zhanghuan/Footer'
   import eleCalendar from 'ele-calendar'
   // import Move from '@/xueyanbo/Move'
-    export default {
-        name: "Xue",
-      components: {
-        Head,
-        Footer,
-        eleCalendar
-      },
-      data (){
-          return {
-            items : [],
-            lists :[],
-            datedef:[
-              {"date":"2018-06-30","content":null,"cid":null},
-              {"date":"2018-06-26","content":null,"cid":null},
-            ],
-            prop:'date' //对应日期字段名
-          }
-      },
-      methods:{
-        home(){
-          this.$router.push({path:'/' })
-        },
-        drama (){
-          this.$router.push({path:'/xue' })
-        },
-        dramaone (){
-          this.$router.push({path:'/xuel' })
-        },
-        dramatwo (){
-          this.$router.push({path:'/xueone' })
-        },
-        dramatree (){
-          this.$router.push({path:'/xuetwo' })
-        },
-        dramal  (){
-          this.$router.push({path:'/xuetree' })
-        },
-        getlist() {
-          this.$http.get(this.$url + 'index.lunbo').then((res) => {
-            this.items =  res.data.data
-          })
-          this.$http.get(this.$url + 'hot').then((res) => {
-            this.lists = res.data.data
-          })
-        },
-        renderContent(h,parmas) {
-          const loop = data =>{
-            return (
-              data.defvalue.value ? (<div><div>{data.defvalue.text}</div>
-                <span  >备选项</span>
-                </div>) : <div>{data.defvalue.text}</div>
-            )
-          }
-          return (
-            < div
-          style = "min-height:170px; min-width:170px;  border:1px solid #eee" >
-            {loop(parmas)}
-            < /div>
-        );
-        },
-      },
-      created() {
-       this.getlist ()
+  export default {
+    name: "Xue",
+    components: {
+      Head,
+      Footer,
+      eleCalendar
+    },
+    data (){
+      return {
+        items : [],
+        lists :[],
+        datedef:[
+          {"date":"2018-06-30","content":null,"cid":null},
+          {"date":"2018-06-26","content":null,"cid":null},
+        ],
+        prop:'date' //对应日期字段名
       }
+    },
+    methods:{
+      home(){
+        this.$router.push({path:'/' })
+      },
+      drama (){
+        this.$router.push({path:'/xue' })
+      },
+      dramaone (){
+        this.$router.push({path:'/xuel' })
+      },
+      dramatwo (){
+        this.$router.push({path:'/xueone' })
+      },
+      dramatree (){
+        this.$router.push({path:'/xuetwo' })
+      },
+      dramal  (){
+        this.$router.push({path:'/xuetree' })
+      },
+      getlist() {
+        this.$http.get(this.$url + 'index.lunbo').then((res) => {
+
+          this.items =  res.data.data
+        })
+        this.$http.get(this.$url + 'hot').then((res) => {
+          console.log('新闻数据加载完成132123' , res.data.data)
+          this.lists = res.data.data
+        })
+      },
+      renderContent(h,parmas) {
+        const loop = data =>{
+          return (
+            data.defvalue.value ? (<div><div>{data.defvalue.text}</div>
+              <span  >备选项</span>
+              </div>) : <div>{data.defvalue.text}</div>
+          )
+        }
+        return (
+          < div
+        style = "min-height:170px; min-width:170px;  border:1px solid #eee" >
+          {loop(parmas)}
+          < /div>
+      );
+      },
+    },
+    created() {
+      this.getlist ()
     }
+  }
 </script>
 <style scoped lang="less">
   .block{
@@ -343,7 +345,7 @@
         text-align: center;
       }
       li.bnmk{
-          float: right;
+        float: right;
       }
       li:hover{
         cursor: pointer;
@@ -369,8 +371,8 @@
       .bh{
         overflow: hidden;
         display: flex;
-       &>.byh{
-         flex: 1;
+        &>.byh{
+          flex: 1;
           dl{
             width: 144px  ;
             margin: 0 auto;
@@ -387,7 +389,7 @@
               color: #495060;
             }
             dd:nth-of-type(2){
-             font-size: 12px;
+              font-size: 12px;
               color: #ccc;
               span{
                 font-size: 9px;

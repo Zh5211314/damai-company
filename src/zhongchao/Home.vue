@@ -1,11 +1,81 @@
 <template>
   <div class="home">
     <Head></Head>
+<<<<<<< HEAD
+    <div class="classification">
+      <p class="iconfont icon-xiangzuo"></p>
+      <div class="classificationhead">
+        <p>全部商品分类</p>
+       <div class="ulbox">
+         <ul>
+           <li @click="drama">喜剧</li>
+           <li @click="dramaone" >体育</li>
+           <li @click="dramatwo">亲子</li>
+           <li @click="dramatree">舞蹈古典</li>
+           <li @click="dramal">摇滚</li>
+         </ul>
+       </div>
+      </div>
+      <div class="rotation">
+        <!--轮播图-->
+      </div>
+      <div class="listb">
+        <ul class="leftul">
+          <li>
+            <i class="iconfont icon-huatong1"></i>
+            演唱会
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-yinlehui"></i>
+            音乐会
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-huajugeju"></i>
+            歌剧话剧
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-shanzi"></i>
+            曲苑杂坛
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-zuqiu"></i>
+            体育比赛
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-ertong"></i>
+            儿童亲子
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+          <li>
+            <i class="iconfont icon-flamenco"></i>
+            舞蹈芭蕾
+            <span class="iconfont icon-tiaozhuanqianwangyoujiantouxiangyouxiayibuxianxing"></span>
+          </li>
+        </ul>
+        <div class="listbox">
+          <div class="topbox">
+            <p>演唱会</p>
+            <i class="iconfont icon-xiangyou"></i>
+            <ul>
+              <li>子类1</li>
+              <li>子类2</li>
+            </ul>
+            <span class="iconfont icon-guanbi"></span>
+          </div>
+          <div class="bottombox">
+            <p class="headp">相关热门</p>
+=======
     <div class="bigger">
       <div class="classification">
         <div class="classificationhead">
           <p>全部商品分类</p>
           <div class="ulbox">                          <!--配置子路由-->
+>>>>>>> 44fcc91dbb3958678c0dcee8e9c74c2dec6d2927
             <ul>
               <li class="homexiju">喜剧</li>
               <li class="homesports">体育</li>
@@ -33,6 +103,31 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+import Head from '@/zhanghuan/Head'
+import Footer from '@/zhanghuan/Footer'
+export default {
+    name: "Chao",
+    components: {
+      Head,
+      Footer
+    },
+    methods:{
+      drama (){
+        this.$router.push({path:'/xue' })
+      },
+      dramaone (){
+        this.$router.push({path:'/xuel' })
+      },
+      dramatwo (){
+        this.$router.push({path:'/xueone' })
+      },
+      dramatree (){
+        this.$router.push({path:'/xuetwo' })
+      },
+      dramal  (){
+        this.$router.push({path:'/xuetree' })
+=======
   import swipe from '@/zhongchao/lunbo'
   import list from '@/zhongchao/list'
   import toda from '@/zhongchao/today'
@@ -67,6 +162,7 @@
             this.oleft = 0
           }
         }
+>>>>>>> 44fcc91dbb3958678c0dcee8e9c74c2dec6d2927
       }
     }
 </script>
