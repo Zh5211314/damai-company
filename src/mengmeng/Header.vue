@@ -5,14 +5,14 @@
           <div class="left">
             <p>HI,欢迎来大麦</p>
             <p>
-              [<span href="#">登录</span>
-              <span href="#">注册</span>]
+              [<router-link tag="span" to="/logining">登录</router-link>
+              <router-link tag="span" to="/resigter">注册</router-link>]
             </p>
             <div @mouseleave="myinfoHide"  @mouseenter="myinfoShow" class="left_myinfo">
               <p>我的大麦<span class="iconfont icon-down-trangle"></span></p>
               <ul :style="{opacity:opacityNum,height:heightNum+'px'}" v-show="off1">
-                <li>个人信息</li>
-                <li>订单管理</li>
+                <router-link tag="li" to="/yan">个人信息</router-link>
+                <router-link tag="li" to="/yan">订单管理</router-link>
               </ul>
             </div>
           </div>

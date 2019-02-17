@@ -48,7 +48,7 @@
               </ul>
               <h1 v-if="seatNumber != 0">
                 <p>总价：{{allMoney}}元</p>
-                <a href="javascript:;">购买</a>
+                <a @click="toOrder()" href="javascript:;">购买</a>
               </h1>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default {
                 }else if(userPrice.length == 1) {
                   this.allMoney = userPrice[0]
                 }
-                console.log(userPrice)
+                //console.log(userPrice)
           }
       }else {
         if (subItem == 'a'){
@@ -265,6 +265,11 @@ export default {
         }
       }
       //console.log(this.getSeatCode)
+    },
+    toOrder () {//点击购买
+      this.$router.push('/order')
+      this.$store.commit('getSitcode',this.getSeatCode)
+      //console.log(this.$store.state.sitCode)
     },
   },
   mounted () {

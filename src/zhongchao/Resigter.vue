@@ -168,6 +168,7 @@
           let getD = localStorage.getItem('cartData')
           if (!getD) {//为空
             localStorage.setItem('cartData', '[' + newD + ']')
+            this.$router.push('/logining')
           } else {//有值
             //this.$router.push({path: '/logining'})
             var contrastdata = JSON.parse(localStorage.getItem('cartData'));  //每次用户注册时，先取值待下面判断
@@ -180,7 +181,7 @@
             } else {         //否则的话才往localstorge里存值
               localStorage.setItem("cartData", '[' + newD + ',' + getD.substring(1, getD.length - 1) + ']')
               this.$router.push({path: '/logining'})
-            }this.$router.push({path: '/'})
+            }
           }
         }
       }

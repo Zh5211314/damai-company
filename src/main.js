@@ -24,3 +24,13 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+router.beforeEach((to, from, next) =>{   //路由拦截，判断用户如果没有登录，则拦截选座，跳转登录
+  if(to.path == '/select'){
+    if(!localStorage.getItem('userLogin')){
+      next('/logining')
+    }else{
+      next()
+    }
+  }
+  next()
+})

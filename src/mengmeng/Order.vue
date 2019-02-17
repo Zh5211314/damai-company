@@ -88,10 +88,10 @@
             <th>价格小计(元)</th>
           </tr>
           <tr v-for="item in listArr">
-            <td>{{item.tit}}</td>
-            <td>{{item.position}}</td>
+            <td>2019【旅程】世界巡回演唱会 - 杭州</td>
+            <td>{{item.col}}排{{item.row}}号</td>
             <td>{{item.price}}</td>
-            <td>{{item.num}}</td>
+            <td>1</td>
             <td>{{item.sumpay}}</td>
           </tr>
         </table>
@@ -175,7 +175,7 @@
 </template>
 
 <script>
-  var listArr = [
+  /*var listArr = [
     {
       'tit':'张韶涵 2019【旅程】世界巡回演唱会 - 杭州',
       'position':'1排7号',
@@ -190,7 +190,7 @@
       'num':4,
       'sumpay':0,
     }
-  ]
+  ]*/
   import Header from '@/mengmeng/Header'
   import Footer from '@/zhanghuan/Footer'
   import OrderNav from '@/mengmeng/OrderNav'
@@ -210,7 +210,7 @@
           isoff:false,
           isoffs:false,
           sum:0,
-          listArr,
+          listArr:[],
           allNum:0,
           allNums:0
         };
@@ -231,13 +231,6 @@
         offs2() {
           this.isoffs = !this.isoffs;
         },
-        count(){
-          for (var j = 0 ; j < this.listArr.length; j++){
-            this.listArr[j].sumpay= listArr[j].price * listArr[j].num
-            this.allNum += this.listArr[j].sumpay
-          }
-          this.allNums=this.allNum+20
-        },
         cli(){
           if(this.isoff&&this.isoffs){
             this.$router.push({
@@ -250,7 +243,16 @@
         }
       },
       created() {
-        this.count()
+        this.listArr = this.$store.state.sitCode
+        this.listArr.forEach(function (item,index) {
+          item.sumpay = item.price
+        })
+        for (var j = 0 ; j < this.listArr.length; j++){
+          this.listArr[j].sumpay= this.listArr[j].price
+          this.allNum += this.listArr[j].sumpay
+        }
+
+        this.allNums=this.allNum+20
       }
     }
 </script>

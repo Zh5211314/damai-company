@@ -5,14 +5,17 @@
         <div class="left">
           <p>HI,欢迎来大麦</p>
           <p>
-            [<router-link tag="span" to="/logining">登录</router-link>
-            <router-link tag="span" to="/resigter">注册</router-link>]
+            <strong v-show="loginPoff">
+              [<router-link tag="span" to="/logining">登录</router-link>
+              <router-link tag="span" to="/resigter">注册</router-link>]
+            </strong>
+            <strong v-show="!loginPoff">{{userName}}</strong>
           </p>
           <div @mouseleave="myinfoHide"  @mouseenter="myinfoShow" class="left_myinfo">
             <p>我的大麦<span class="iconfont icon-down-trangle"></span></p>
             <ul :style="{opacity:opacityNum,height:heightNum+'px'}" v-show="off1">
-              <li>个人信息</li>
-              <li>订单管理</li>
+              <router-link tag="li" to="/yan">个人信息</router-link>
+              <router-link tag="li" to="/yan">订单管理</router-link>
             </ul>
           </div>
         </div>
@@ -112,6 +115,8 @@ export default {
         indexMshow:-1,
         timer2:null,
         cityName:'北京',
+        loginPoff:true,
+        userName:'',
         //以上都是Head里的数据
         off2:false,
         searchValue:''
@@ -177,6 +182,15 @@ export default {
       backHomeFn () {
         this.$router.push('/')
       }
+    },
+    created() {
+      var getLoginCode = localStorage.getItem('userLogin')
+      if(getLoginCode){
+        this.loginPoff = false
+        this.userName = JSON.parse(getLoginCode).phone
+      }else {
+        this.loginPoff = true
+      }
     }
 }
 </script>
@@ -200,19 +214,28 @@ export default {
       .left{
         display: flex;
         p:first-of-type{
-          padding-right: 4px;
+          padding-right: 1px;
         }
         p:nth-of-type(2){
-          margin-right: 10px;
+          width: 80px;
+          position: relative;
+          padding: 0 5px;
           span:first-of-type{
             color: red;
             padding-left: 3px;
             cursor: pointer;
           }
-          span:last-of-type{
+          span:nth-of-type(2){
             color: #1b1b1b;
             padding-right: 3px;
             cursor: pointer;
+          }
+          strong:last-of-type{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 88px;
           }
         }
         .left_myinfo{
