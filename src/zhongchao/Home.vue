@@ -7,11 +7,11 @@
         <p>全部商品分类</p>
        <div class="ulbox">
          <ul>
-           <li>喜剧</li>
-           <li>体育</li>
-           <li>亲子</li>
-           <li>舞蹈古典</li>
-           <li>摇滚</li>
+           <li @click="drama">喜剧</li>
+           <li @click="dramaone" >体育</li>
+           <li @click="dramatwo">亲子</li>
+           <li @click="dramatree">舞蹈古典</li>
+           <li @click="dramal">摇滚</li>
          </ul>
        </div>
       </div>
@@ -92,6 +92,23 @@ export default {
     components: {
       Head,
       Footer
+    },
+    methods:{
+      drama (){
+        this.$router.push({path:'/xue' })
+      },
+      dramaone (){
+        this.$router.push({path:'/xuel' })
+      },
+      dramatwo (){
+        this.$router.push({path:'/xueone' })
+      },
+      dramatree (){
+        this.$router.push({path:'/xuetwo' })
+      },
+      dramal  (){
+        this.$router.push({path:'/xuetree' })
+      }
     }
 }
 </script>
