@@ -149,6 +149,7 @@
         }else{
           alert('登录成功！！')
           this.$router.push({path: '/'})
+          window.location.reload()
           this.detailCode = {
             phone: this.onephone,
             pass: this.onepass

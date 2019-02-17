@@ -9,8 +9,9 @@
               [<router-link tag="span" to="/logining">登录</router-link>
               <router-link tag="span" to="/resigter">注册</router-link>]
             </strong>
-            <strong v-show="!loginPoff">{{userName}}</strong>
+            <strong v-show="logintrue">{{userName}}</strong>
           </p>
+          <b v-show="logintrue" @click="cancellation()">注销</b>
           <div @mouseleave="myinfoHide"  @mouseenter="myinfoShow" class="left_myinfo">
             <p>我的大麦<span class="iconfont icon-down-trangle"></span></p>
             <ul :style="{opacity:opacityNum,height:heightNum+'px'}" v-show="off1">
@@ -116,6 +117,7 @@ export default {
         timer2:null,
         cityName:'北京',
         loginPoff:true,
+        logintrue:false,
         userName:'',
         //以上都是Head里的数据
         off2:false,
@@ -181,15 +183,26 @@ export default {
       },
       backHomeFn () {
         this.$router.push('/')
+      },
+      cancellation(){
+        if (this.loginPoff = false) {
+          this.logintrue = true
+        }else {
+          this.logintrue = false
+          this.loginPoff = true
+          localStorage.setItem('userLogin',[""])
+        }
       }
     },
     created() {
       var getLoginCode = localStorage.getItem('userLogin')
       if(getLoginCode){
-        this.loginPoff = false
         this.userName = JSON.parse(getLoginCode).phone
+        this.loginPoff = false
+        this.logintrue = true
       }else {
         this.loginPoff = true
+        this.logintrue = false
       }
     }
 }
@@ -211,13 +224,16 @@ export default {
       justify-content: space-between;
       font-size: 12px;
       color: #495060;
+      b{
+        cursor: pointer;      //注销
+      }
       .left{
         display: flex;
         p:first-of-type{
           padding-right: 1px;
         }
         p:nth-of-type(2){
-          width: 80px;
+          width: 76px;
           position: relative;
           padding: 0 5px;
           span:first-of-type{
@@ -242,6 +258,8 @@ export default {
           position: relative;
           &>p{
             cursor: pointer;
+            padding-left: 4px;
+            line-height: 32px;
           }
           &>ul{
             text-align: center;
