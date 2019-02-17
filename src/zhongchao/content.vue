@@ -15,7 +15,7 @@
         </div>
         <div class="smollpic">
           <ul>
-            <li v-for="(item,k) in asd" :key="k">
+            <li @click="toDetail()" v-for="(item,k) in asd" :key="k">
               <p><img :src="item.liImg" alt=""></p>
               <dl>
                 <dt>{{item.title | over}}</dt>
@@ -69,6 +69,9 @@
             this.lis = this.contbigpic[0].newsList
           })
         },
+        toDetail () {
+          this.$router.push('/detail')
+        }
       },
       created(){
         this.getconttt()
