@@ -28,7 +28,7 @@
               <div class="box">
                 <span><i class="iconfont icon-password"></i></span>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="请输入登录密码"
                   v-model="onepass"
                   @focus="afocus()"
