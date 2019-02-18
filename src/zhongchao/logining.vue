@@ -148,13 +148,12 @@
           alert('账号或者密码不对')
         }else{
           alert('登录成功！！')
-          this.$router.push({path: '/'})
-          window.location.reload()
           this.detailCode = {
             phone: this.onephone,
             pass: this.onepass
           }
           localStorage.setItem('userLogin',JSON.stringify(this.detailCode))
+          this.$router.push('/')
         }
       },
       afocus () {   //获取焦点的时候提示取消

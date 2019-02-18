@@ -190,19 +190,32 @@ export default {
         }else {
           this.logintrue = false
           this.loginPoff = true
-          localStorage.setItem('userLogin',[""])
+          localStorage.removeItem('userLogin')
         }
       }
     },
     created() {
       var getLoginCode = localStorage.getItem('userLogin')
       if(getLoginCode){
-        this.userName = JSON.parse(getLoginCode).phone
         this.loginPoff = false
         this.logintrue = true
+        this.userName = JSON.parse(getLoginCode).phone
       }else {
         this.loginPoff = true
         this.logintrue = false
+      }
+    },
+    watch:{
+      $route(){
+        var getLoginCode = localStorage.getItem('userLogin')
+        if(getLoginCode){
+          this.loginPoff = false
+          this.logintrue = true
+          this.userName = JSON.parse(getLoginCode).phone
+        }else {
+          this.loginPoff = true
+          this.logintrue = false
+        }
       }
     }
 }
