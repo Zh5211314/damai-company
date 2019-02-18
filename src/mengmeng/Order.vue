@@ -34,33 +34,32 @@
                 <td>4200000000000001</td>
               </tr>
             </table>
-            <div class="people" v-show="isShows">
-              <!--<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                <h5>
-                常用购票人 <span>X</span>
+            <div class="people" v-show="isShows"><!--新增购票人信息-->
+              <h5>
+                常用购票人 <span @click="shows">X</span>
               </h5>
-                <p>
-                  <label><i>*</i>用户姓名</label>
-                  <input type="text" placeholder="请输入你的用户姓名">
-                </p>
-                <p>
-                  <label><i>*</i>身份证号</label>
-                  <input type="text" placeholder="请输入你的身份证号码">
-                </p>
-                <p>
-                  <label><i>*</i>卡类型</label>
-                  <el-dropdown>
-                    <span class="el-dropdown-link">
-                      请输入持卡类型<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item>护照</el-dropdown-item>
-                      <el-dropdown-item disabled>身份证</el-dropdown-item>
-                      <el-dropdown-item divided>户口本</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                </p>
-              </el-form>-->
+              <div class="shree-2b">
+                <el-form :rules="rules" ref="formwrap" class="addinfo" label-position="right" label-width="80px" :model="addinfo">
+                  <el-form-item label="姓名" prop="name">
+                    <el-input v-model="addinfo.name"></el-input>
+                  </el-form-item>
+                  <el-form-item label="卡类型" prop="cardtype">
+                    <el-select v-model="addinfo.cardtype" placeholder="请选择卡类型">
+                      <el-option label="身份证" value="身份证"></el-option>
+                      <el-option label="护照" value="护照"></el-option>
+                      <el-option label="港澳通行证" value="港澳通行证"></el-option>
+                      <el-option label="台胞证" value="台胞证"></el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item label="身份证号" prop="id">
+                    <el-input v-model.number="addinfo.id"></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" @click="onSubmit('formwrap')">保存</el-button>
+                    <el-button @click="shows">取消</el-button>
+                  </el-form-item>
+                </el-form>
+              </div>
             </div>
           </div>
         </div>
@@ -120,30 +119,6 @@
             <button type="button">确认发票信息</button>
           </el-tab-pane>
         </el-tabs>
-        <!--<p>
-          <span class="oactive">公司</span>
-          <span>个人</span>
-        </p>-->
-        <!--<ul>
-          <li>
-            <p>
-              公司抬头：<input type="text" placeholder="请输入公司抬头">
-            </p>
-            <p>
-              公司税号：<input type="text" placeholder="请输入公司税号">
-            </p>
-            <button type="button">确认发票信息</button>
-          </li>
-          <li>
-            <p>
-              个人信息：<input type="text" placeholder="请输入个人信息">
-            </p>
-            <p>
-              个人信息：<input type="text" placeholder="请输入个人信息">
-            </p>
-            <button type="button">确认发票信息</button>
-          </li>
-        </ul>-->
       </div>
       <ul class="insurance">
         <li>
@@ -202,6 +177,23 @@
         OrderNav
       },
       data() {
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+        var checkid = (rule, value, callback) => {
+          if (!value) {
+            return callback(new Error('身份证号不能为空'))
+          }
+          setTimeout(() => {
+            if (!Number.isInteger(value)) {
+              callback(new Error('请输入数字值'))
+            } else {
+              if (reg.test(value) === false) {
+                callback(new Error('身份证输入不合法'))
+              } else {
+                callback()
+              }
+            }
+          }, 200)
+        }
         return {
           activeName: 'first',
           radio: '1',
@@ -212,7 +204,26 @@
           sum:0,
           listArr:[],
           allNum:0,
-          allNums:0
+          allNums:0,
+          /* 单个添加的购票人信息 */
+          addinfo: {
+            name: '',
+            cardtype: '',
+            id: ''
+          },
+          /* 表单验证规则 */
+          rules: {
+            name: [
+              { required: true, message: '请输入姓名', trigger: 'blur' },
+              { min: 1, max: 5, message: '长度在 1 到 5 个字符', trigger: 'blur' }
+            ],
+            cardtype: [
+              { required: true, message: '请选择卡类型', trigger: 'change' }
+            ],
+            id: [
+              {validator: checkid, trigger: 'blur'}
+            ]
+          },
         };
       },
       methods: {
@@ -223,7 +234,7 @@
           this.isShow = true;
         },
         shows() {
-          this.isShows = true;
+          this.isShows = !this.isShows;
         },
         offs1() {
           this.isoff = !this.isoff;
@@ -326,6 +337,52 @@
                   th:first-of-type {
                     width: 230px;
                   }
+                }
+              }
+            }
+            .people{
+              width: 500px;
+              border: 1px solid #ff3c1b;
+              border-radius: 4px;
+              position: fixed;
+              left: 50%;
+              top: 30%;
+              transform: translateX(-50%);
+              background: #fff;
+              padding-right: 20px;
+              h5{
+                height: 30px;
+                line-height: 30px;
+                font-size: 14px;
+                font-weight: normal;
+                text-indent: 10px;
+                margin-bottom: 20px;
+                &>span{
+                  display: inline-block;
+                  float: right;
+                  width: 20px;
+                  height: 20px;
+                  cursor: pointer;
+                }
+              }
+              p{
+                height: 40px;
+                line-height: 40px;
+                padding-right: 20px;
+                i{
+                  display: inline-block;
+                  width: 20px;
+                }
+              }
+              p:last-of-type{
+                button{
+                  float: right;
+                  width: 60px;
+                  margin-right: 10px;
+                }
+                button:last-child{
+                  background: #fff;
+                  color: #000;
                 }
               }
             }
