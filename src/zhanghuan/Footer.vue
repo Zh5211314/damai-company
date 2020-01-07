@@ -8,14 +8,14 @@
               <li>电话订购</li>
               <li>上门订购</li>
               <li>大客户团体订购</li>
-              <li>大麦超级票订购</li>
+              <li>大卖超级票订购</li>
             </ul>
             <ul>
               <li>配送方式</li>
               <li>送货上门</li>
               <li>电子票</li>
               <li>上门自取</li>
-              <li>大麦自助机换票</li>
+              <li>大卖自助机换票</li>
             </ul>
             <ul>
               <li>支付方式</li>
@@ -23,11 +23,11 @@
               <li>柜台支付</li>
             </ul>
             <ul>
-              <li>大麦网微信</li>
+              <li>大卖网微信</li>
               <li><img src="../assets/img/erWeima.jpg"/></li>
             </ul>
             <ul>
-              <li>大麦网触屏版</li>
+              <li>大卖网触屏版</li>
               <li><img src="../assets/img/erWeima.jpg"/></li>
             </ul>
             <ul>

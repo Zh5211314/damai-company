@@ -4,7 +4,7 @@
       <div class="showDetail">
         <div class="brandNav">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }">大麦</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/' }">大卖</el-breadcrumb-item>
             <el-breadcrumb-item>北京</el-breadcrumb-item>
             <el-breadcrumb-item>电影</el-breadcrumb-item>
             <el-breadcrumb-item>大型多媒体励志互动儿童剧《奇门遁甲》(11月)</el-breadcrumb-item>
@@ -56,7 +56,7 @@
           <div class="dentailRight">
             <ul>
               <li>
-                <p>大麦网评分</p>
+                <p>大卖网评分</p>
                 <el-rate
                   v-model="value3"
                   show-score
@@ -239,7 +239,7 @@
                   <ul>
                     <li>
                       数额巨大，其行为已构成受贿罪；为谋取不正当利益，给予国家工作人员财物，情节严重，其行为已构成行贿罪
-                      <span>大麦网退换货说明>></span>
+                      <span>大卖网退换货说明>></span>
                     </li>
                   </ul>
                 </div>

@@ -3,7 +3,7 @@
     <div class="HeadWrap">
       <div class="head">
         <div class="left">
-          <p>HI,欢迎来大麦</p>
+          <p>HI,欢迎来大卖</p>
           <p>
             <strong v-show="loginPoff">
               [<router-link tag="span" to="/logining">登录</router-link>
@@ -13,7 +13,7 @@
           </p>
           <b v-show="logintrue" @click="cancellation()">注销</b>
           <div @mouseleave="myinfoHide"  @mouseenter="myinfoShow" class="left_myinfo">
-            <p>我的大麦<span class="iconfont icon-down-trangle"></span></p>
+            <p>我的大卖<span class="iconfont icon-down-trangle"></span></p>
             <ul :style="{opacity:opacityNum,height:heightNum+'px'}" v-show="off1">
               <router-link tag="li" to="/yan">个人信息</router-link>
               <router-link tag="li" to="/yan">订单管理</router-link>
@@ -101,7 +101,7 @@ var cityCode = {
   fourCode: ['南京','成都','武汉','太远','福州'],
   fiveCode: ['香港','重庆','济南','哈尔滨','天津']
 }
-var ulCode = ['大麦网微信','手机版','客户服务','网站导航','English']
+var ulCode = ['大卖网微信','手机版','客户服务','网站导航','English']
 export default {
     name: 'Head',
     data () {

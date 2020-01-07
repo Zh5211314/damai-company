@@ -5,7 +5,7 @@
     <div  class="administration-a">
    <div class="left">
      <h2>
-       我的大麦
+       我的大卖
      </h2>
      <ul class="list">
        <li>
@@ -34,7 +34,7 @@
    <div class="rigth" v-show="show5"><!--订单管理-->
     <div class="rigth-1">
       <ul class="rigth-1a">
-        <li>我的大麦></li>
+        <li>我的大卖></li>
         <li>交易中心></li>
         <li>订单管理</li>
       </ul>
@@ -120,7 +120,7 @@
    <div class="rigth" v-show="show6"><!--个人信息-->
      <div class="rigth-1">
        <ul class="rigth-1a">
-         <li>我的大麦></li>
+         <li>我的大卖></li>
          <li>交易中心></li>
          <li>订单管理</li>
        </ul>
@@ -136,7 +136,7 @@
        <div class="rigth2-a">
          <div class="cont"  style="display: block;"><!--个人信息-->
            <h5>
-             完善更多个人信息，有助于我们为您提供更加个性化的服务，大麦网将尊重并保护您的隐私。
+             完善更多个人信息，有助于我们为您提供更加个性化的服务，大卖网将尊重并保护您的隐私。
            </h5>
            <p>
              <span class="fa fa-asterisk est"></span>昵称
@@ -202,7 +202,7 @@
    <div class="rigth" v-show="show7"><!--常用购票人-->
      <div class="rigth-1">
        <ul class="rigth-1a">
-         <li>我的大麦></li>
+         <li>我的大卖></li>
          <li>交易中心></li>
          <li>订单管理</li>
        </ul>

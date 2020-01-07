@@ -4,7 +4,7 @@
       <div class="main">
         <div class="brandNav">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }">大麦</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/' }">大卖</el-breadcrumb-item>
             <el-breadcrumb-item>北京</el-breadcrumb-item>
             <el-breadcrumb-item>电影</el-breadcrumb-item>
             <el-breadcrumb-item>大型多媒体励志互动儿童剧《奇门遁甲》(11月)</el-breadcrumb-item>
@@ -61,6 +61,8 @@
 <script>
 import Head from '@/zhanghuan/Head'
 import Footer from '@/zhanghuan/Footer'
+// 这个数组是座位分布图，a=A级座位，以此类推，下划线_代表空白地方
+// 一横排占位32个
 var seatOrder = [
   "_____aaaaa_____aaaa_____aaaa____",
   "___ccccccc____cccccc____ccccc___",
