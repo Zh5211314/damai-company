@@ -15,6 +15,7 @@
           <img src="../assets/img/zuowei_03.jpg"/>
           <div class="seat_wrap">
             <div class="seat_left">
+              <!-- 座位分布 -->
               <div id="seatMap">
                 <div class="seat-charts-row" v-for="(item,x) in seatOrder"  :key="x">
                   <div @click="userChoiceFn(x,y,subItem)" ref="allSeat" class="allPublicGray" v-for="(subItem,y) in getItems(item)" :key="y">
@@ -25,6 +26,7 @@
                   </div>
                 </div>
               </div>
+              <!-- 三等级凸显 -->
               <div class="seatStatus">
                 <ul>
                   <li v-for="(item, index) in seatGrade" :key="index">
@@ -97,11 +99,11 @@ export default {
   name: 'Selection',
   data () {
     return {
-      seatOrder,
-      seatGrade,
-      getSeatCode:[],
-      seatNumber:0,
-      allMoney:0
+      seatOrder,     // 座位分布数组
+      seatGrade,     // 三等级划分
+      getSeatCode:[],// 已选
+      seatNumber:0,  // 座位个数
+      allMoney:0     // 总价
     }
   },
   components: {
@@ -165,6 +167,7 @@ export default {
     getItems (item) {  //封装的将字符串转成一个数组的方法，遍历数组中每一个元素
       return item.match(/[a-z_]{1}(\[[0-9a-z_]{0,}(,[0-9a-z_ ]+)?\])?/gi);
     },
+    // 三等级凸显
     choiceGradeFn (index) {//三个等级座位分布展示
       this.seatGrade[index].off = !this.seatGrade[index].off
         //console.log(this.seatGrade[index].off, index)
@@ -208,7 +211,7 @@ export default {
                 }
                 //console.log(userPrice)
           }
-      }else {
+      }else {     //  这个else下面的判断里面代码重复，大家可以封装一下
         if (subItem == 'a'){
                 var deleteArr = this.getSeatCode.filter(function (item,index) {//筛选出用户取消的座位信息
                   return item.num == x+'-'+y
@@ -276,17 +279,19 @@ export default {
   },
   mounted () {
     this.bindScroll()
+    // 初始所有座位处于未选中状态
+    // 应该是后台会返回一个已选过的座位数组给前端，前端将已被选中的座位进行标识，并且设置为只读，这里的算法是x*32+y = 已被选中的座位下标
     let oDivs = document.getElementsByClassName('allPublicGray')
     for (var i = 0; i < oDivs.length ; i++){
       oDivs[i].off = false
     }
-    Array.prototype.indexOf = function(val) {   //封装的数组删除指定元素的方法，在217行调用
+    Array.prototype.indexOf = function(val) {   
       for (var i = 0; i < this.length; i++) {
         if (this[i] == val) return i;
       }
       return -1;
     }
-    Array.prototype.remove = function(val) {
+    Array.prototype.remove = function(val) {   //封装的数组删除指定元素的方法，在217行调用
       var index = this.indexOf(val);
       if (index > -1) {
         this.splice(index, 1);
